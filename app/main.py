@@ -1,5 +1,7 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+
 from app.core.config import API_TITLE, API_VERSION
 from app.db.database import create_tables
 from app.routes import auth, users
@@ -15,7 +17,6 @@ async def lifespan(app: FastAPI):
     """
     create_tables()
     yield
-  
 
 
 app = FastAPI(
@@ -23,6 +24,17 @@ app = FastAPI(
     version=API_VERSION,
     lifespan=lifespan,
     description="API de autenticación completa con FastAPI, SQLAlchemy y JWT"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -35,9 +47,5 @@ async def root():
     }
 
 
-
 app.include_router(users.router)
 app.include_router(auth.router)
-
-
-
