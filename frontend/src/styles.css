@@ -19,7 +19,11 @@ body {
   color: var(--ink);
   font-family: "Space Grotesk", sans-serif;
   background:
-    radial-gradient(circle at 12% 18%, rgba(208, 91, 47, 0.16), transparent 33%),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(208, 91, 47, 0.16),
+      transparent 33%
+    ),
     radial-gradient(circle at 90% 0%, rgba(111, 72, 49, 0.2), transparent 44%),
     linear-gradient(165deg, var(--bg) 0%, var(--bg-alt) 100%);
 }
@@ -111,7 +115,10 @@ input {
   font: inherit;
   outline: none;
   background: rgba(255, 255, 255, 0.74);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 input:focus {
@@ -130,7 +137,10 @@ button {
   color: #fff8f4;
   background: linear-gradient(120deg, var(--brand-dark), var(--brand));
   cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 12px 24px rgba(132, 52, 22, 0.24);
 }
 
@@ -190,4 +200,41 @@ button:disabled {
   .single-page {
     padding-top: 1.3rem;
   }
+}
+.user-card {
+  max-width: 560px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  margin-top: 18px;
+}
+
+.user-info p {
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+.password-box {
+  margin-top: 14px;
+}
+
+.password-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.password-box p {
+  background: transparent;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  margin: 0;
 }
