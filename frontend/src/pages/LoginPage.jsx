@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialLogin = {
   username: "",
@@ -9,6 +9,7 @@ const initialLogin = {
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState(initialLogin);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const navigate = useNavigate();
 
   const onLoginChange = (event) => {
     const { name, value } = event.target;
@@ -40,7 +41,8 @@ export default function LoginPage() {
       }
 
       setLoginForm(initialLogin);
-      alert(`Usuario Autenticado. Token: ${data.access_token}`);
+      // alert(`Usuario Autenticado. Token: ${data.access_token}`);
+      navigate("/usuario");
     } catch (error) {
       alert(`Fallo de autenticacion: ${error.message}`);
     } finally {
